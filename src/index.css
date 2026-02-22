@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FRC Scouting App - Premium AI-Era Analytics Design System */
+
+/* Rajdhani font loaded via index.html <link> tag */
+
+@layer base {
+  :root {
+    /* Base colors - Deep navy */
+    --background: 220 30% 6%;
+    --foreground: 210 20% 90%;
+
+    /* Card surfaces - Layered navy elevation */
+    --card: 220 25% 10%;
+    --card-foreground: 210 20% 90%;
+    --card-elevated: 220 22% 14%;
+    --card-elevated-2: 220 20% 18%;
+
+    /* Popover/Modal */
+    --popover: 220 25% 11%;
+    --popover-foreground: 210 20% 90%;
+
+    /* Primary - Golden/Amber accent */
+    --primary: 42 90% 50%;
+    --primary-foreground: 220 30% 6%;
+    --primary-glow: 42 95% 55%;
+    --primary-muted: 42 40% 20%;
+
+    /* Secondary - Elevated surface */
+    --secondary: 220 22% 14%;
+    --secondary-foreground: 210 15% 60%;
+
+    /* Muted - Subdued text and surfaces */
+    --muted: 220 20% 16%;
+    --muted-foreground: 210 10% 45%;
+
+    /* Accent - Highlight elements */
+    --accent: 220 20% 18%;
+    --accent-foreground: 210 20% 90%;
+
+    /* Destructive - Errors and critical */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Alliance Colors - Critical for FRC */
+    --alliance-red: 0 75% 55%;
+    --alliance-red-bg: 0 50% 12%;
+    --alliance-red-border: 0 50% 30%;
+    --alliance-blue: 215 90% 58%;
+    --alliance-blue-bg: 215 60% 12%;
+    --alliance-blue-border: 215 60% 35%;
+
+    /* Status Colors */
+    --status-success: 155 75% 45%;
+    --status-success-bg: 155 40% 10%;
+    --status-warning: 42 95% 52%;
+    --status-warning-bg: 42 60% 10%;
+    --status-danger: 0 70% 50%;
+    --status-danger-bg: 0 40% 10%;
+    --status-info: 200 85% 50%;
+    --status-info-bg: 200 50% 10%;
+
+    /* Utility */
+    --border: 220 20% 16%;
+    --border-subtle: 220 20% 12%;
+    --input: 220 22% 12%;
+    --ring: 42 90% 50%;
+
+    --radius: 0.5rem;
+
+    /* Data Display */
+    --stat-positive: 155 75% 45%;
+    --stat-negative: 0 70% 50%;
+    --stat-neutral: 210 10% 45%;
+
+    /* Sidebar */
+    --sidebar-background: 220 30% 5%;
+    --sidebar-foreground: 210 15% 55%;
+    --sidebar-primary: 42 90% 50%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 25% 10%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 20% 12%;
+    --sidebar-ring: 42 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-transparent;
+  }
+
+  html {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  /* Data/Mono typography - also Rajdhani */
+  .font-mono-data {
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Counter Button Styles - Premium */
+  .counter-btn {
+    @apply flex items-center justify-center w-11 h-11 rounded-lg bg-card-elevated text-foreground font-bold text-lg select-none;
+    transition: all 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .counter-btn:hover {
+    @apply bg-card-elevated-2;
+    transform: scale(1.05);
+  }
+
+  .counter-btn:active {
+    @apply bg-primary text-primary-foreground;
+    transform: scale(0.92);
+  }
+
+  /* Alliance Toggle Styles - No shadows */
+  .alliance-toggle-red {
+    @apply bg-alliance-red-bg text-alliance-red;
+  }
+
+  .alliance-toggle-blue {
+    @apply bg-alliance-blue-bg text-alliance-blue;
+  }
+
+  /* Status Tags - Subtle, no borders */
+  .status-tag {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium tracking-wide;
+  }
+
+  .status-reliable {
+    @apply bg-status-success-bg text-status-success;
+  }
+
+  .status-warning {
+    @apply bg-status-warning-bg text-status-warning;
+  }
+
+  .status-danger {
+    @apply bg-status-danger-bg text-status-danger;
+  }
+
+  .status-info {
+    @apply bg-status-info-bg text-status-info;
+  }
+
+  /* Data Grid Cells */
+  .data-cell {
+    @apply px-4 py-3 text-sm tabular-nums;
+  }
+
+  .data-cell-header {
+    @apply px-4 py-3 text-2xs font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+
+  /* Card Variants - Premium */
+  .card-data {
+    @apply bg-card rounded-xl;
+    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-elevated {
+    @apply bg-card-elevated rounded-xl;
+  }
+
+  /* Sticky Action Bar */
+  .sticky-action-bar {
+    @apply fixed bottom-16 lg:bottom-0 left-0 right-0 p-4 bg-background/90 backdrop-blur-xl z-40;
+  }
+
+  /* Section Headers - Clean divider */
+  .section-header {
+    @apply flex items-center gap-2.5 text-2xs font-semibold uppercase tracking-widest text-muted-foreground mb-4;
+  }
+
+  .section-header::after {
+    @apply content-[''] flex-1 h-px bg-gradient-to-r from-muted/50 to-transparent;
+  }
+
+  /* Metric Card - NO shadows */
+  .metric-card {
+    @apply p-4 bg-card-elevated rounded-xl;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold tabular-nums tracking-tight;
+  }
+
+  .metric-label {
+    @apply text-2xs text-muted-foreground uppercase tracking-widest mt-1;
+  }
+
+  /* Star Rating */
+  .star-rating {
+    @apply flex gap-0.5;
+  }
+
+  .star-active {
+    @apply text-status-warning fill-current;
+  }
+
+  .star-inactive {
+    @apply text-muted-foreground/40;
+  }
+
+  /* Quick Toggle - Premium */
+  .quick-toggle {
+    @apply flex items-center justify-between p-4 bg-card-elevated rounded-xl cursor-pointer;
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .quick-toggle:hover {
+    @apply bg-card-elevated-2;
+    transform: translateY(-1px);
+  }
+
+  .quick-toggle[data-active="true"] {
+    @apply bg-status-success-bg;
+  }
+
+  .quick-toggle[data-active="false"] {
+    @apply bg-card-elevated;
+  }
+
+  /* Dense Table Styles - No borders, alternating bg */
+  .dense-table {
+    @apply w-full text-sm;
+  }
+
+  .dense-table th {
+    @apply text-left text-2xs font-semibold uppercase tracking-widest text-muted-foreground py-3 px-4 bg-card-elevated/50;
+  }
+
+  .dense-table td {
+    @apply py-3 px-4 tabular-nums;
+  }
+
+  .dense-table tbody tr {
+    @apply transition-colors;
+  }
+
+  .dense-table tbody tr:nth-child(even) {
+    @apply bg-card-elevated/30;
+  }
+
+  .dense-table tbody tr:hover {
+    @apply bg-card-elevated/60;
+  }
+
+  /* Mobile Card List - Premium */
+  .mobile-card-list {
+    @apply space-y-3;
+  }
+
+  .mobile-card-item {
+    @apply p-4 bg-card rounded-xl;
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-card-item:hover {
+    @apply bg-card-elevated;
+    transform: translateY(-1px);
+  }
+}
+
+/* Custom scrollbar for data-dense views */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground));
+  }
+}
